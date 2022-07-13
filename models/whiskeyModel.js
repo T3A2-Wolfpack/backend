@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const whiskeySchema = new Schema(
   {
-    brand: {
+    name: {
       type: String,
       required: true,
     },
@@ -13,14 +13,14 @@ const whiskeySchema = new Schema(
       required: true,
     },
     region: {
-      type: Number,
+      type: String,
       required: true,
     },
     type: {
       type: String,
       required: true,
     },
-    budget: {
+    price: {
       type: String,
       required: true,
     },
