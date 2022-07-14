@@ -28,14 +28,14 @@ const whiskey_details = async (req, res) => {
 
 // create new whiskey
 const whiskey_create = async (req, res) => {
-  const { name, age, region, type, price } = req.body;
+  const { name, age, region, type, price, image } = req.body;
 
   // add doc to db
   try {
-    const whiskey = await Whiskey.create({ name, age, region, type, price });
+    const whiskey = await Whiskey.create({ name, age, region, type, price, image });
     res.status(200).json(whiskey);
   } catch (error) {
-    console.log("error")
+    console.log(error.message)
     res.status(400).json({ error: error.message });
   }
 };

@@ -6,7 +6,11 @@ const whiskeyRoutes = require("./routes/whiskeys");
 
 const app = express();
 
+const cors = require("cors")
+
 app.use(express.json());
+
+app.use(cors())
 
 // global middleware to log requests
 app.use((req, res, next) => {
