@@ -2,16 +2,33 @@
 const Tasting = require("../models/tastingModel");
 const mongoose = require("mongoose");
 
+// GET all tastings for a whiskey
+const tasting_index = async (req, res) => {
+  const { id } = req.params;
+  
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such whiskey" });
+  }
+
+  const tastings = await Tasting.find({whiskey: id});
+
+  if (!tastings) {
+    return res.status(404).json({ error: "No tastings" });
+  }
+
+  res.status(200).json(tastings);
+};
+
+// POST a tasting for a whiskey
 const tasting_create = async (req, res) => {
-  const { visual, nose, whiskey, user} = req.body;
+  const { visual, nose, whiskey } = req.body;
 
   // add doc to db
   try {
     const tasting = await Tasting.create({
       visual,
       nose,
-      whiskey,
-      user
+      whiskey
     });
     res.status(200).json(tasting);
   } catch (error) {
@@ -21,5 +38,6 @@ const tasting_create = async (req, res) => {
 };
 
 module.exports = {
-  tasting_create,
+  tasting_index,
+  tasting_create
 };
