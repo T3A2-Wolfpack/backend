@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const whiskeyRoutes = require("./routes/whiskeys");
+const tastingRoutes = require("./routes/tastings");
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use((req, res, next) => {
 
 // routes
 app.use("/api/whiskeys", whiskeyRoutes);
+app.use("/api/whiskeys/:id/tastings", tastingRoutes);
 
 // database connection
 mongoose
