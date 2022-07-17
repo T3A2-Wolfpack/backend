@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 // GET all tastings for a whiskey
 const tasting_index = async (req, res) => {
   const { id } = req.params;
+  console.log(id)
   
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "No such whiskey" });
