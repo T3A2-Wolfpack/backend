@@ -52,7 +52,7 @@ const tastingSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "whiskey",
     },
-    user: {
+    user_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "user",
     },
