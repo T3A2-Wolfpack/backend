@@ -7,6 +7,8 @@ const tastingRoutes = require("./routes/tastings");
 
 const app = express();
 
+const port = process.env.PORT || 4000;
+
 const cors = require("cors")
 
 app.use(express.json());
@@ -29,8 +31,8 @@ mongoose
   .then(() => {
     console.log("connected to database");
     // listen to port
-    app.listen(process.env.PORT, () => {
-      console.log("listening for requests on port", process.env.PORT);
+    app.listen(port, () => {
+      console.log("listening for requests on port", port);
     });
   })
   .catch((err) => {
