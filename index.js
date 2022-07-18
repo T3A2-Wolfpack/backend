@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 const whiskeyRoutes = require("./routes/whiskeys");
 const tastingRoutes = require("./routes/tastings");
 const userRoutes = require("./routes/users");
+const jwt = require('express-jwt')
+const jwks = require('jwks-rsa')
 
 const app = express();
 
@@ -15,6 +17,25 @@ const cors = require("cors")
 app.use(express.json());
 
 app.use(cors())
+
+// Retrieve signing keys from JSON Web Key Set endpoint to check JSON Web Token
+const jwtCheck = jwt({
+  secret: jwks.expressJwtSecret({
+      cache: true,
+      rateLimit: true,
+      jwksRequestsPerMinute: 5,
+      jwksUri: 'https://hwhiskey.us.auth0.com/.well-known/jwks.json'
+}),
+audience: 'https://hwhiskey-api.com/',
+issuer: 'https://hwhiskey.us.auth0.com/',
+algorithms: ['RS256']
+});
+
+app.use(jwtCheck);
+
+app.get('/authorized', function (req, res) {
+res.send('Secured Resource');
+});
 
 // global middleware to log requests
 app.use((req, res, next) => {
