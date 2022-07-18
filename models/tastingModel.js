@@ -24,31 +24,31 @@ const tastingSchema = new Schema(
         required: true,
       },
     },
-    // palate: {
-    //   comment: {
-    //     type: String,
-    //     required: true,
-    //   },
-    //   rating: {
-    //     type: String,
-    //     required: true,
-    //   },
-    // },
-    // finish: {
-    //   comment: {
-    //     type: String,
-    //     required: true,
-    //   },
-    //   rating: {
-    //     type: String,
-    //     required: true,
-    //   },
-    // },
-    // finalComment: {
-    //   type: String,
-    //   required: true
-    // }
-    whiskey: {
+    palate: {
+      comment: {
+        type: String,
+        required: true,
+      },
+      rating: {
+        type: String,
+        required: true,
+      },
+    },
+    finish: {
+      comment: {
+        type: String,
+        required: true,
+      },
+      rating: {
+        type: String,
+        required: true,
+      },
+    },
+    finalComment: {
+      type: String,
+      required: true
+    },
+    whiskey_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "whiskey",
     },

@@ -8,6 +8,9 @@ const whiskeySchema = new Schema(
       type: String,
       required: true,
     },
+    description: {
+      type: String,
+    },
     age: {
       type: Number,
       required: true,

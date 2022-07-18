@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 
 // GET all whiskeys
 const whiskey_index = async (req, res) => {
+  console.log(mongoose.models)
   const whiskeys = await Whiskey.find().sort({ createdAt: -1 });
 
   res.status(200).json(whiskeys);
