@@ -31,10 +31,6 @@ const whiskeySchema = new Schema(
       type: String,
       required: false,
     },
-    description: {
-      type: String,
-      required: false,
-    },
   },
   { timestamps: true }
 );
