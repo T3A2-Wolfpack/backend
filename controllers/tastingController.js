@@ -22,7 +22,8 @@ const tasting_index = async (req, res) => {
 
 // POST a tasting for a whiskey
 const tasting_create = async (req, res) => {
-  const { visual, nose, whiskey, user } = req.body;
+  const { visual, nose, whiskey, palate, finish, finalComment } = req.body;
+
 
   // add doc to db
   try {
@@ -30,7 +31,12 @@ const tasting_create = async (req, res) => {
       visual,
       nose,
       whiskey,
+
       user
+      palate,
+      finish,
+      finalComment
+
     });
     res.status(200).json(tasting);
   } catch (error) {
