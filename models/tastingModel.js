@@ -48,7 +48,8 @@ const tastingSchema = new Schema(
       type: String,
       required: true
     },
-    whiskey: {
+
+    whiskey_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "whiskey",
     },
