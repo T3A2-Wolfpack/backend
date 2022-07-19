@@ -14,10 +14,6 @@ const port = process.env.PORT || 4000;
 
 const cors = require("cors")
 
-app.use(express.json());
-
-app.use(cors())
-
 // Retrieve signing keys from JSON Web Key Set endpoint to check JSON Web Token
 const jwtCheck = expressjwt({
   secret: jwks.expressJwtSecret({
@@ -27,9 +23,13 @@ const jwtCheck = expressjwt({
       jwksUri: 'https://hwhiskey.us.auth0.com/.well-known/jwks.json'
 }),
 audience: 'https://hwhiskey-api.com/',
-issuer: 'https://hwhiskey.us.auth0.com/',
+issuer: `https://hwhiskey.us.auth0.com/`,
 algorithms: ['RS256']
 });
+
+app.use(express.json());
+
+app.use(cors())
 
 app.use(jwtCheck);
 

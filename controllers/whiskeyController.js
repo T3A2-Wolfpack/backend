@@ -2,6 +2,7 @@
 const Whiskey = require("../models/whiskeyModel");
 const mongoose = require("mongoose");
 
+
 // GET all whiskeys
 const whiskey_index = async (req, res) => {
   console.log(mongoose.models)

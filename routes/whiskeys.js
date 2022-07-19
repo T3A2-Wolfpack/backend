@@ -1,4 +1,5 @@
 const express = require("express");
+const jwtAuthz = require("express-jwt-authz")
 
 const {
   whiskey_create,
@@ -7,6 +8,10 @@ const {
   whiskey_delete,
   whiskey_update,
 } = require("../controllers/whiskeyController");
+
+const checkPermissions = jwtAuthz(["write:whiskeys"], {
+  customScopeKey: "permissions"
+})
 
 const router = express.Router();
 
@@ -17,7 +22,7 @@ router.get("/", whiskey_index);
 router.get("/:id", whiskey_details);
 
 // POST a new whiskey
-router.post("/", whiskey_create);
+router.post("/", checkPermissions, whiskey_create);
 
 // DELETE a whiskey
 router.delete("/:id", whiskey_delete);
