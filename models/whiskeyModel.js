@@ -10,6 +10,7 @@ const whiskeySchema = new Schema(
     },
     description: {
       type: String,
+      required: true,
     },
     age: {
       type: Number,

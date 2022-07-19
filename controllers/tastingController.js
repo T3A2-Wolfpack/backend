@@ -43,7 +43,25 @@ const tasting_create = async (req, res) => {
   }
 };
 
+const tasting_delete = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such tasting" });
+  }
+
+  const tasting = await Tasting.findOneAndDelete({ _id: id });
+
+  if (!tasting) {
+    return res.status(404).json({ error: "No such tasting" });
+  }
+
+  res.status(200).json(tasting);
+};
+
+
 module.exports = {
   tasting_index,
-  tasting_create
+  tasting_create,
+  tasting_delete
 };
