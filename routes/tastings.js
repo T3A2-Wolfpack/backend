@@ -14,6 +14,9 @@ router.get("/", tasting_index);
 // GET a single whiskey
 // router.get("/:id", whiskey_details);
 
+// DELETE a whiskey
+router.delete("/:id", tasting_delete);
+
 // POST a new tasting
 router.post("/", tasting_create);
 
