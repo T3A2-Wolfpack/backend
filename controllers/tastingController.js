@@ -22,7 +22,7 @@ const tasting_index = async (req, res) => {
 
 // POST a tasting for a whiskey
 const tasting_create = async (req, res) => {
-  const { visual, nose, palate, finish, finalComment, whiskey_id, user_id} = req.body;
+  const { visual, nose, palate, finish, finalComment, finalRating, whiskey_id, user_id} = req.body;
 
 
   // add doc to db
@@ -33,6 +33,7 @@ const tasting_create = async (req, res) => {
       palate,
       finish,
       finalComment,
+      finalRating,
       whiskey_id,
       user_id
     });
@@ -43,7 +44,25 @@ const tasting_create = async (req, res) => {
   }
 };
 
+// DELETE a tasting
+const tasting_delete = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such tasting" });
+  }
+
+  const tasting = await Tasting.findOneAndDelete({ _id: id });
+
+  if (!tasting) {
+    return res.status(404).json({ error: "No such tasting" });
+  }
+
+  res.status(200).json(tasting);
+};
+
 module.exports = {
   tasting_index,
-  tasting_create
+  tasting_create,
+  tasting_delete
 };

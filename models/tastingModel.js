@@ -10,7 +10,7 @@ const tastingSchema = new Schema(
         required: true,
       },
       rating: {
-        type: String,
+        type: Number,
         required: true,
       },
     },
@@ -20,7 +20,7 @@ const tastingSchema = new Schema(
         required: true,
       },
       rating: {
-        type: String,
+        type: Number,
         required: true,
       },
     },
@@ -30,7 +30,7 @@ const tastingSchema = new Schema(
         required: true,
       },
       rating: {
-        type: String,
+        type: Number,
         required: true,
       },
     },
@@ -40,22 +40,28 @@ const tastingSchema = new Schema(
         required: true,
       },
       rating: {
-        type: String,
+        type: Number,
         required: true,
       },
     },
+    finalRating: {
+      type: Number,
+      required: false,
+    },
     finalComment: {
       type: String,
-      required: true
+      required: true,
     },
 
     whiskey_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "whiskey",
+      required: false,
     },
     user_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "user",
+      required: false,
     },
   },
   { timestamps: true }
