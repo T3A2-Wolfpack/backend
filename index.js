@@ -1,14 +1,7 @@
-require("dotenv").config();
-
-const express = require("express");
-const mongoose = require("mongoose");
-const whiskeyRoutes = require("./routes/whiskeys");
-const tastingRoutes = require("./routes/tastings");
-const userRoutes = require("./routes/users");
-
-const app = express();
+const app = require('./app')
 
 const port = process.env.PORT || 4000;
+
 
 const cors = require("cors")
 
@@ -41,3 +34,9 @@ mongoose
   .catch((err) => {
     console.log(err);
   }); 
+
+// listen to port
+app.listen(port, () => {
+  console.log("listening for requests on port", port);
+});
+

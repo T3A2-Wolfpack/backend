@@ -3,7 +3,8 @@ const express = require("express");
 const {
   tasting_create,
   tasting_index,
-  tasting_delete
+  tasting_delete,
+  tasting_details
 } = require("../controllers/tastingController");
 
 const router = express.Router({ mergeParams: true });
@@ -11,8 +12,8 @@ const router = express.Router({ mergeParams: true });
 // GET all tastings
 router.get("/", tasting_index);
 
-// GET a single whiskey
-// router.get("/:id", whiskey_details);
+// GET a single tasting
+router.get("/:id", tasting_details);
 
 // DELETE a whiskey
 router.delete("/:id", tasting_delete);
