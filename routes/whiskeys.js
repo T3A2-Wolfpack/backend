@@ -6,6 +6,7 @@ const {
   whiskey_index,
   whiskey_delete,
   whiskey_update,
+  tastings_index,
 } = require("../controllers/whiskeyController");
 
 const router = express.Router();
@@ -24,5 +25,8 @@ router.delete("/:id", whiskey_delete);
 
 // UPDATE a whiskey
 router.patch("/:id", whiskey_update);
+
+// GET all the tastings
+router.get("/:id/tastings", tastings_index);
 
 module.exports = router;

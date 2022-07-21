@@ -19,13 +19,14 @@ app.use(cors())
 // global middleware to log requests
 app.use((req, res, next) => {
   console.log(req.path, req.method);
+  console.log("---------------------------");
   next();
 });
 
 // routes
 app.use("/api/whiskeys", whiskeyRoutes);
 app.use("/api/whiskeys/:id/tastings", tastingRoutes);
-app.use("/api/users", userRoutes);
+app.use("/api/", userRoutes);
 
 // database connection
 mongoose

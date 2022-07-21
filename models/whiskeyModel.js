@@ -32,6 +32,10 @@ const whiskeySchema = new Schema(
       type: String,
       required: false,
     },
+    finalRating: {
+      type: Number,
+      required: false,
+    },
   },
   { timestamps: true }
 );

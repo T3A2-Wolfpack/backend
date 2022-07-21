@@ -1,13 +1,16 @@
 const express = require("express");
 
+
 const {
-  user_index,
+  login,
+  register,
+  users_index
 } = require("../controllers/userController");
 
-const router = express.Router({ mergeParams: true });
+const router = express.Router();
 
-// GET all users
-router.get("/", user_index);
-
+router.post("/register", register);
+router.post("/login", login);
+router.get("/users", users_index);
 
 module.exports = router;
