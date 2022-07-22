@@ -20,10 +20,10 @@ userSchema.statics.registerStatic = async function (name, email, password) {
   if (!validator.isEmail(email)) {
     throw Error("Email not valid");
   }
+  
   if (!validator.isStrongPassword(password)) {
     throw Error("Password not strong enough");
   }
-
   const exists = await this.findOne({ email });
 
   if (exists) {
@@ -32,9 +32,7 @@ userSchema.statics.registerStatic = async function (name, email, password) {
 
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(password, salt);
-
   const user = await this.create({ name, email, password: hash });
-
   return user;
 };
 
