@@ -16,7 +16,7 @@ const users_index = async (req, res) => {
 
 const register = async (req, res) => {
   const { name, email, password } = req.body;
-
+console.log(1)
   try {
     const user = await User.registerStatic(name, email, password);
 

@@ -26,6 +26,7 @@ app.use("/api/whiskeys", whiskeyRoutes);
 app.use("/api/whiskeys/:id/tastings", tastingRoutes);
 app.use("/api/users", userRoutes);
 
+
 mongoose
   .connect(process.env.ATLAS_DB_URL)
   .then(() => {
