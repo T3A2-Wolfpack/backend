@@ -5,16 +5,17 @@ const mongoose = require("mongoose");
 const whiskeyRoutes = require("./routes/whiskeys");
 const tastingRoutes = require("./routes/tastings");
 const userRoutes = require("./routes/users");
+const { tasting_user } = require("./controllers/tastingController");
 
 const app = express();
 
 const port = process.env.PORT || 4000;
 
-const cors = require("cors")
+const cors = require("cors");
 
 app.use(express.json());
 
-app.use(cors())
+app.use(cors());
 
 // global middleware to log requests
 app.use((req, res, next) => {
@@ -24,6 +25,7 @@ app.use((req, res, next) => {
 });
 
 // routes
+app.get("/api/tastings/:id/user", tasting_user); 
 app.use("/api/whiskeys", whiskeyRoutes);
 app.use("/api/whiskeys/:id/tastings", tastingRoutes);
 app.use("/api/", userRoutes);
@@ -40,4 +42,4 @@ mongoose
   })
   .catch((err) => {
     console.log(err);
-  }); 
+  });

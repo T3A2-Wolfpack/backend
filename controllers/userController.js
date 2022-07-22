@@ -23,7 +23,7 @@ const register = async (req, res) => {
     // create a token
     const token = createToken(user._id);
 
-    res.status(200).json({ name, email, _id, token });
+    res.status(200).json({ user, token });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -34,12 +34,11 @@ const login = async (req, res) => {
 
   try {
     const user = await User.loginStatic(email, password);
-    const name = user.name;
-    const _id = user._id;
-    // create a token
+    
+     // create a token
     const token = createToken(user._id);
 
-    res.status(200).json({ name, email, _id, token });
+    res.status(200).json({ user, token });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
