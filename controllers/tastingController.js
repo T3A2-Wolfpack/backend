@@ -41,7 +41,7 @@ const tasting_details = async (req, res) => {
 
 // POST a tasting for a whiskey
 const tasting_create = async (req, res) => {
-  const { visual, nose, palate, finish, finalComment, finalRating, whiskey_id, user_id} = req.body;
+  const { visual, nose, palate, finish, finalComment, finalRating, whiskey_id, user_id, user_name} = req.body;
 
 
   // add doc to db
@@ -54,7 +54,8 @@ const tasting_create = async (req, res) => {
       finalComment,
       finalRating,
       whiskey_id,
-      user_id
+      user_id,
+      user_name
     });
     res.status(200).json(tasting);
   } catch (error) {
