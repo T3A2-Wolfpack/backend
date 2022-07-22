@@ -63,6 +63,10 @@ const tastingSchema = new Schema(
       ref: "user",
       required: false,
     },
+    user_name: {
+      type: String,
+      required: false,
+    },
   },
   { timestamps: true }
 );

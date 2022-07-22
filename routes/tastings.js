@@ -8,6 +8,7 @@ const {
   tasting_details
 } = require("../controllers/tastingController");
 
+
 const router = express.Router({ mergeParams: true });
 
 // GET all tastings
