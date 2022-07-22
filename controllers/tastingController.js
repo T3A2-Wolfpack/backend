@@ -1,5 +1,6 @@
 // import whiskey model
 const Tasting = require("../models/tastingModel");
+const User = require("../models/userModel");
 const mongoose = require("mongoose");
 
 // GET all tastings for a whiskey
@@ -80,9 +81,28 @@ const tasting_delete = async (req, res) => {
   res.status(200).json(tasting);
 };
 
+// GET tasting user
+const tasting_user = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such tasting" });
+  }
+
+  const user = await User.find({_id: id});
+
+  if (!user) {
+    return res.status(404).json({ error: "No such user" });
+  }
+
+  res.status(200).json(user);
+};
+
+
 module.exports = {
   tasting_index,
   tasting_create,
   tasting_delete,
+  tasting_user,
   tasting_details
 };
